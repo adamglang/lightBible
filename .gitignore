@@ -4,8 +4,7 @@
 /mongoBackup
 
 # dependencies
-/node_modules
-scraper/node_modules
+node_modules/
 
 # testing
 /coverage
