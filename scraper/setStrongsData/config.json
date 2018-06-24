@@ -1,0 +1,15 @@
+{
+  "baseURI": "https://www.blueletterbible.org/lang/lexicon/lexicon.cfm?Strongs=",
+  "languages": [
+    {
+      "language": "Hebrew",
+      "denotedBy": "h",
+      "totalNumbers": 8674
+    },
+    {
+      "language": "Greek",
+      "denotedBy": "g",
+      "totalNumbers": 5624
+    }
+  ]
+}

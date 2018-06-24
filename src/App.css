@@ -1,0 +1,35 @@
+#view #Reader {
+  margin: 20px;
+}
+#view #Reader .strongsReference {
+  cursor: pointer;
+}
+#view .selectBoxWrapper {
+  width: 100%;
+  float: left;
+  margin: 20px;
+}
+#view .selectBoxWrapper .bookSelectBox {
+  float: left;
+  width: 150px;
+}
+#view .selectBoxWrapper .chapterSelectBox {
+  float: left;
+  width: 150px;
+  margin-left: 20px;
+}
+.modalContainer {
+  margin-top: 5px;
+}
+.modalContainer header {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.modalContainer header .pronuciation {
+  margin-left: 15px;
+}
+.modalContainer .biblicalUsage {
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=App.css.map */

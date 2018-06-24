@@ -1,0 +1,29 @@
+{
+  "name": "lbscraper",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "scrape": "node ./scraper/index.js"
+  },
+  "dependencies": {
+    "commander": "^2.15.1",
+    "fs-extra": "^5.0.0",
+    "jsdom": "^11.6.2",
+    "lodash": "^4.17.5",
+    "mongoose": "^5.0.14",
+    "node-fetch": "^2.1.2",
+    "query-parse": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamglang/lbscraper"
+  },
+  "keywords": [],
+  "author": "Adam Lang",
+  "contributors": [
+    "Adam Lang"
+  ],
+  "license": "MIT"
+}
