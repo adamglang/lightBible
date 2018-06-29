@@ -18,8 +18,8 @@ const ModalContent = (
         <span className={"originalWord"}>{originalWord}</span>
         <span className={"pronuciation"}>"{pronuciation}"</span>
       </header>
-      <div className={"biblicalUsage"}><b>Biblical Usage</b>: {generateBiblicalUsage(biblicalOutline)}</div>
-      <div><b>Strongs Definintions: </b>{definitionWithStrongsLinks(definition, setStrongsURL)}</div>
+      <div className={"thayersDefinitions"}><b>Thayers Definitions</b>: {generateBiblicalUsage(biblicalOutline)}</div>
+      <div><b>Strongs Definintions: </b><p>{definitionWithStrongsLinks(definition, setStrongsURL)}</p></div>
     </section>
   </div>
 );
@@ -41,6 +41,7 @@ const definitionWithStrongsLinks = (definition, setStrongsURL) => {
         onClick={() => setStrongsURL(strongsLanguage, strongsNumber)}
       >
         {word }
+
       </span>;
     }
 
@@ -54,7 +55,7 @@ const generateBiblicalUsage = (biblicalOutline, isLetter) => {
   const list = Object.keys(biblicalOutline).map((key) => {
     const outlineItem = biblicalOutline[key];
 
-    return <li>{outlineItem.text} {outlineItem.subList ? generateBiblicalUsage(outlineItem.subList, !isLetter) : ""}</li>
+    return <li key={key}>{outlineItem.text} {outlineItem.subList ? generateBiblicalUsage(outlineItem.subList, !isLetter) : ""}</li>
   });
 
   return <ol type={olType}>{list}</ol>;

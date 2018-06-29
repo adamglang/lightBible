@@ -16,6 +16,8 @@ const Selectors = ({
       className={"bookSelectBox"}
       value={bookListValue}
       onChange={handleBookListChange}
+      searchable={true}
+      noResultsText={"No results found"}
     />
     <Select
       options={chapterList}
@@ -23,6 +25,8 @@ const Selectors = ({
       className={"chapterSelectBox"}
       value={chapterListValue}
       onChange={handleChapterListChange}
+      searchable={true}
+      noResultsText={"No results found"}
     />
   </nav>
 );

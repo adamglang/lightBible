@@ -11,15 +11,16 @@
     "react-fetch-component": "^6.0.1",
     "react-responsive-modal": "^3.0.3",
     "react-scripts": "1.1.4",
-    "react-select": "^1.2.1"
+    "react-select": "^1.2.1",
+    "react-spinners": "^0.3.2"
   },
   "scripts": {
-    "start": "concurrently \"mongod\" \"cd restServer && npm start\" \"react-scripts start\"",
+    "start": "concurrently \"mongod\" \"cd ../lbRestServer && npm start\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "startClient": "react-scripts start"
   },
-  "proxy": "http://localhost:8080/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adamglang/lightbible.git"

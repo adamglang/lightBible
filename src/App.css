@@ -1,25 +1,50 @@
 #view #Reader {
-  margin: 20px;
+  margin: 80px 20px 20px;
+}
+#view #Reader .spinLoader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 #view #Reader .strongsReference {
   cursor: pointer;
 }
+#view #Reader .strongsReference.redText {
+  color: #7E0000;
+}
+#view #Reader .strongsReference:hover {
+  text-decoration: underline;
+}
 #view .selectBoxWrapper {
   width: 100%;
   float: left;
-  margin: 20px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  background: #FFFFFF;
+  -webkit-box-shadow: 1px 5px 20px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 5px 20px 1px rgba(0, 0, 0, 0.5);
 }
 #view .selectBoxWrapper .bookSelectBox {
   float: left;
-  width: 150px;
+  width: 165px;
 }
 #view .selectBoxWrapper .chapterSelectBox {
   float: left;
-  width: 150px;
+  width: 70px;
   margin-left: 20px;
 }
+[class*="styles_modal"] .spinLoader {
+  width: 300px;
+  height: 100px;
+}
+[class*="styles_modal"] .spinLoader > div {
+  margin-left: 150px;
+  margin-top: 75px;
+}
 .modalContainer {
-  margin-top: 5px;
+  margin-top: 25px;
+  max-height: 1000px;
 }
 .modalContainer header {
   font-size: 24px;
@@ -29,7 +54,19 @@
 .modalContainer header .pronuciation {
   margin-left: 15px;
 }
-.modalContainer .biblicalUsage {
+.modalContainer .thayersDefinitions {
   margin-bottom: 20px;
+}
+.modalContainer .thayersDefinitions .strongsReference {
+  text-decoration: underline;
+}
+.modalContainer .thayersDefinitions .strongsReference:hover {
+  text-decoration: none;
+}
+@media screen and (max-width: 1024px) {
+  .modalContainer {
+    max-height: 500px;
+    overflow: scroll;
+  }
 }
 /*# sourceMappingURL=App.css.map */

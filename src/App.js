@@ -7,8 +7,10 @@ import 'react-select/dist/react-select.css';
 import "./App.css";
 import _ from "lodash";
 
-const baseKJURL = "http://localhost:3000/api/kjbible/";
-const baseStrongsURL = "http://localhost:3000/api/strongsdata/";
+const remote = false;
+const API = remote ? "http://206.189.161.101:8080" : "http://localhost:8080";
+const baseKJURL = `${API}/api/kjbible/`;
+const baseStrongsURL = `${API}/api/strongsdata/`;
 
 class App extends React.Component {
 

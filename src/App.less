@@ -1,32 +1,61 @@
 #view {
   #Reader {
-    margin: 20px;
+    margin: 80px 20px 20px;
+
+    .spinLoader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
 
     .strongsReference {
       cursor: pointer;
+      &.redText {
+        color: #7E0000;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
   .selectBoxWrapper {
     width: 100%;
     float: left;
-    margin: 20px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 5px 20px 1px rgba(0,0,0,0.5);
+    box-shadow: 1px 5px 20px 1px rgba(0,0,0,0.5);
 
     .bookSelectBox {
       float: left;
-      width: 150px;
+      width: 165px;
     }
 
     .chapterSelectBox {
       float: left;
-      width: 150px;
+      width: 70px;
       margin-left: 20px;
     }
   }
 }
 
+[class*="styles_modal"] {
+  .spinLoader {
+    width: 300px;
+    height: 100px;
+    > div {
+      margin-left: 150px;
+      margin-top: 75px;
+    }
+  }
+}
+
 .modalContainer {
-  margin-top: 5px;
+  margin-top: 25px;
+  max-height: 1000px;
 
   header {
     font-size: 24px;
@@ -40,8 +69,19 @@
     }
   }
 
-  .biblicalUsage {
+  .thayersDefinitions {
     margin-bottom: 20px;
+    .strongsReference {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-height: 500px;
+    overflow: scroll;
   }
 }
 

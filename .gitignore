@@ -3,6 +3,8 @@
 #mongobackup
 /mongoBackup
 
+#scraper
+/scraper
 # dependencies
 node_modules/
 
