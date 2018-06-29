@@ -7,11 +7,11 @@ A bible webapp with the  following specs:
 4. Gives detailed translation and cultural context details on a second click (taken from strongs concordance and various commentaries)
 
 #### Tech/stack
-* Container Service: Docker
-* Deployment: AWS Elastic Beanstock (but could be deployed to any docker capable cloud service)
-* Scraper: Node.js
-* Database: Mongodb
+* Deployment: Digital Ocean
 * RST API/Service layer: Express / Mongoose
-* Client: React/Redux
+* Webserver: NGINX
+* Client: React
+* Database: Mongodb
+* Scraper: Node.js
 
 
