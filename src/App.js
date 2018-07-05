@@ -7,7 +7,7 @@ import 'react-select/dist/react-select.css';
 import "./App.css";
 import _ from "lodash";
 
-const remote = false;
+const remote = true;
 const API = remote ? "http://206.189.161.101:8080" : "http://localhost:8080";
 const baseKJURL = `${API}/api/kjbible/`;
 const baseStrongsURL = `${API}/api/strongsdata/`;
@@ -24,7 +24,8 @@ class App extends React.Component {
       chapterListValue: {value: 1, label: 1},
       chapterURL: `${baseKJURL}Genesis/1`,
       strongsURL: "",
-      modalOpen: false
+      modalOpen: false,
+      isTouchScreen: false
     };
   }
 
@@ -53,7 +54,7 @@ class App extends React.Component {
     const bookList = _.get(this, "state.bookList");
     const presentBookIndex = bookList.findIndex((book) => {
       return book.value === _.get(this, "state.bookListValue.value");
-    }) + 1;
+    });
 
     if(newValue.value > totalChapters) {
       this.handleBookEnd(presentBookIndex, bookList);
@@ -72,7 +73,7 @@ class App extends React.Component {
   };
 
   handleBookEnd = (presentBookIndex, bookList, movingBackward) => {
-    const condition = movingBackward ? (presentBookIndex  - 1) === 0 : (presentBookIndex + 1) > bookList.length;
+    const condition = movingBackward ? (presentBookIndex) === 0 : (presentBookIndex + 2) > bookList.length;
     const bookReset = movingBackward ? bookList[65] : bookList[0];
 
 
@@ -80,15 +81,15 @@ class App extends React.Component {
       this.handleBookListChange(bookReset, movingBackward);
     }
     else {
-      const newBookIndex = movingBackward ? presentBookIndex - 2 : presentBookIndex + 1;
+      const newBookIndex = movingBackward ? presentBookIndex - 1 : presentBookIndex + 1;
       const newBook = bookList[newBookIndex];
       this.handleBookListChange(newBook, movingBackward);
     }
   };
 
-  onCloseModal = () => {
-    this.setState({modalOpen: false});
-  };
+  onCloseModal = () => this.setState({modalOpen: false});
+
+  declareTouchScreen = () => this.setState({isTouchScreen: true});
 
   static setReaderURL(book, chapter) {
     return `${baseKJURL}${book}/${chapter}`;
@@ -106,7 +107,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <section id="view">
+      <section
+        id="view"
+        className={this.state.isTouchScreen ? "touchScreen" : ""}
+        onTouchStart={this.declareTouchScreen}
+      >
         <Header
           handleBookListChange={this.handleBookListChange}
           handleChapterListChange={this.handleChapterListChange}

@@ -79,7 +79,8 @@
 }
 .modalContainer {
   margin-top: 25px;
-  max-height: 1000px;
+  max-height: 75vh;
+  overflow-y: scroll;
   color: #111111;
   font-size: 18px;
   line-height: 1.6;
@@ -106,16 +107,7 @@
 .modalContainer .thayersDefinitions .strongsReference:hover {
   text-decoration: none;
 }
-@media screen and (max-width: 1024px) {
-  .modalContainer {
-    max-height: 500px;
-    overflow: scroll;
-  }
-}
-@media screen and (max-width: 500px) {
-  .modalContainer {
-    max-height: 350px;
-    overflow: scroll;
-  }
+.touchScreen .chapterController {
+  display: none !important;
 }
 /*# sourceMappingURL=App.css.map */

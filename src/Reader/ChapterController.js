@@ -12,9 +12,10 @@ const ChapterController = ({
   }) => (
   <Swipeable
     className={"ChapterSwipableArea"}
-    onSwipingLeft={goToNewChapter}
+    onSwipedLeft={goToNewChapter}
+    onSwipedRight={goToNewChapter}
   >
-    <span className={className} onClick={goToNewChapter}> </span>
+    <span className={`chapterController ${className}`} onClick={goToNewChapter}> </span>
   </Swipeable>
 );
 
