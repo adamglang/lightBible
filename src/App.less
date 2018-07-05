@@ -1,20 +1,60 @@
 #view {
-  #Reader {
-    margin: 80px 20px 20px;
+  @import "icomoon/style.css";
 
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.6;
+
+  #readerWrapper {
     .spinLoader {
       position: absolute;
       top: 50%;
       left: 50%;
     }
 
-    .strongsReference {
-      cursor: pointer;
-      &.redText {
-        color: #7E0000;
+    #Reader {
+      display:flex;
+      margin-top: 80px;
+
+      #Chapter {
+        flex-basis: 76%;
       }
-      &:hover {
-        text-decoration: underline;
+
+      .ChapterSwipableArea {
+        flex-basis: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          display: none;
+          position: fixed;
+          top: 50%;
+          font-size: 40px;
+          color: rgba(0, 0, 0, 0.4);
+          cursor: pointer;
+          &:hover {
+            color: rgba(0, 0, 0, 0.9);
+          }
+          @media screen and (max-width: 776px) {
+            font-size: 28px;
+          }
+        }
+        &:hover {
+          span {
+            display: block;
+          }
+        }
+      }
+
+      .strongsReference {
+        cursor: pointer;
+        &.redText {
+          color: #7E0000;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -57,15 +97,21 @@
   margin-top: 25px;
   max-height: 1000px;
 
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.6;
+
   header {
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
     margin-bottom: 20px;
-    .originalWord {
 
-    }
     .pronuciation {
       margin-left: 15px;
+    }
+
+    @media screen and (max-width: 776px) {
+      font-size: 24px;
     }
   }
 
@@ -83,5 +129,11 @@
     max-height: 500px;
     overflow: scroll;
   }
+
+  @media screen and (max-width: 500px) {
+    max-height: 350px;
+    overflow: scroll;
+  }
 }
+
 

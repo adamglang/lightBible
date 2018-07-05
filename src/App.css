@@ -1,18 +1,53 @@
-#view #Reader {
-  margin: 80px 20px 20px;
+#view {
+  @import "icomoon/style.css";
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.6;
 }
-#view #Reader .spinLoader {
+#view #readerWrapper .spinLoader {
   position: absolute;
   top: 50%;
   left: 50%;
 }
-#view #Reader .strongsReference {
+#view #readerWrapper #Reader {
+  display: flex;
+  margin-top: 80px;
+}
+#view #readerWrapper #Reader #Chapter {
+  flex-basis: 76%;
+}
+#view #readerWrapper #Reader .ChapterSwipableArea {
+  flex-basis: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#view #readerWrapper #Reader .ChapterSwipableArea span {
+  display: none;
+  position: fixed;
+  top: 50%;
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
-#view #Reader .strongsReference.redText {
+#view #readerWrapper #Reader .ChapterSwipableArea span:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+@media screen and (max-width: 776px) {
+  #view #readerWrapper #Reader .ChapterSwipableArea span {
+    font-size: 28px;
+  }
+}
+#view #readerWrapper #Reader .ChapterSwipableArea:hover span {
+  display: block;
+}
+#view #readerWrapper #Reader .strongsReference {
+  cursor: pointer;
+}
+#view #readerWrapper #Reader .strongsReference.redText {
   color: #7E0000;
 }
-#view #Reader .strongsReference:hover {
+#view #readerWrapper #Reader .strongsReference:hover {
   text-decoration: underline;
 }
 #view .selectBoxWrapper {
@@ -45,14 +80,22 @@
 .modalContainer {
   margin-top: 25px;
   max-height: 1000px;
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.6;
 }
 .modalContainer header {
-  font-size: 24px;
+  font-size: 32px;
   text-align: center;
   margin-bottom: 20px;
 }
 .modalContainer header .pronuciation {
   margin-left: 15px;
+}
+@media screen and (max-width: 776px) {
+  .modalContainer header {
+    font-size: 24px;
+  }
 }
 .modalContainer .thayersDefinitions {
   margin-bottom: 20px;
@@ -66,6 +109,12 @@
 @media screen and (max-width: 1024px) {
   .modalContainer {
     max-height: 500px;
+    overflow: scroll;
+  }
+}
+@media screen and (max-width: 500px) {
+  .modalContainer {
+    max-height: 350px;
     overflow: scroll;
   }
 }

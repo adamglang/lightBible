@@ -2,21 +2,53 @@ import React from "react";
 import Fetch from "react-fetch-component";
 import {PropagateLoader} from 'react-spinners';
 import Chapter from "./Chapter";
+import ChapterController from "./ChapterController";
 
-const Reader = ({chapterURL, setStrongsURL}) => (
-  <section id={"Reader"}>
-    <Fetch url={chapterURL}>
-      {
-        ({loading, error, data}) => (
-          <div>
-            {loading && <div className={"spinLoader"}><PropagateLoader color={"#333333"} className={"loader"}/></div>}
-            {error && console.error(`Could not fetch from ${chapterURL}. Got ${error.stack}`)}
-            {data && (<Chapter {...data} setStrongsURL={setStrongsURL}/>)}
-          </div>
-        )
-      }
-    </Fetch>
-  </section>
+
+const Reader = ({
+  chapterURL,
+  setStrongsURL,
+  chapterListValue,
+  handleBookListChange,
+  handleChapterListChange,
+}) => (
+
+
+  <Fetch url={chapterURL}>
+    {
+      ({loading, error, data}) => (
+        <section id={"readerWrapper"}>
+          {loading && <div className={"spinLoader"}><PropagateLoader color={"#333333"} className={"loader"}/></div>}
+          {error && console.error(`Could not fetch from ${chapterURL}. Got ${error.stack}`)}
+          {data && (
+            <div id={"Reader"}>
+              <ChapterController
+                chapterListValue={chapterListValue}
+                handleBookListChange={handleBookListChange}
+                handleChapterListChange={handleChapterListChange}
+                directionToMove={-1}
+                className={"icon-chevron-left"}
+              />
+              <Chapter
+                {...data}
+                setStrongsURL={setStrongsURL}
+                handleBookListChange={handleBookListChange}
+                handleChapterListChange={handleChapterListChange}
+              />
+              <ChapterController
+                chapterListValue={chapterListValue}
+                handleBookListChange={handleBookListChange}
+                handleChapterListChange={handleChapterListChange}
+                directionToMove={1}
+                className={"icon-chevron-right"}
+              />
+            </div>
+          )}
+        </section>
+      )
+    }
+  </Fetch>
+
 );
 
 export default Reader;

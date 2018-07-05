@@ -1,12 +1,16 @@
 import React from "react";
 import Passages from "./Passages"
 
-const Chapter = ({title, passages, setStrongsURL}) => (
+const Chapter = ({
+  title,
+  passages,
+  setStrongsURL
+}) => (
   <section id={"Chapter"}>
     <header>
       <h2>{title}</h2>
     </header>
-    <Passages passages={passages} setStrongsURL={setStrongsURL}/>
+    <Passages passages={passages} setStrongsURL={setStrongsURL} />
   </section>
 );
 

@@ -17,10 +17,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleBookListChange = this.handleBookListChange.bind(this);
-    this.handleChapterListChange = this.handleChapterListChange.bind(this);
-    this.setStrongsURL = this.setStrongsURL.bind(this);
-
     this.state = {
       bookList: BookList,
       chapterList: App.loadChapterList(50),
@@ -39,20 +35,55 @@ class App extends React.Component {
     });
   };
 
-  handleBookListChange = (newValue) => {
+  handleBookListChange = (newValue, useLastChapter) => {
+    const lastChapter = newValue.numberOfChapters;
+    const chapterListValue = useLastChapter ? {value: lastChapter, label: lastChapter} : {value: 1, label: 1};
+    const chapterToLoad = useLastChapter ? lastChapter : 1;
+
     this.setState({
       bookListValue: newValue,
       chapterList: App.loadChapterList(newValue.numberOfChapters),
-      chapterListValue: {value: 1, label: 1},
-      chapterURL: App.setReaderURL(newValue.value, 1)
+      chapterListValue: chapterListValue,
+      chapterURL: App.setReaderURL(newValue.value, chapterToLoad)
     });
   };
 
   handleChapterListChange = (newValue) => {
-    this.setState({
-      chapterListValue: newValue,
-      chapterURL: App.setReaderURL(_.get(this, "state.bookListValue.value"), newValue.value)
-    });
+    const totalChapters = _.get(this, "state.chapterList.length");
+    const bookList = _.get(this, "state.bookList");
+    const presentBookIndex = bookList.findIndex((book) => {
+      return book.value === _.get(this, "state.bookListValue.value");
+    }) + 1;
+
+    if(newValue.value > totalChapters) {
+      this.handleBookEnd(presentBookIndex, bookList);
+    }
+
+    else if(newValue.value < 1) {
+      this.handleBookEnd(presentBookIndex, bookList, true);
+    }
+
+    else {
+      this.setState({
+        chapterListValue: newValue,
+        chapterURL: App.setReaderURL(_.get(this, "state.bookListValue.value"), newValue.value)
+      });
+    }
+  };
+
+  handleBookEnd = (presentBookIndex, bookList, movingBackward) => {
+    const condition = movingBackward ? (presentBookIndex  - 1) === 0 : (presentBookIndex + 1) > bookList.length;
+    const bookReset = movingBackward ? bookList[65] : bookList[0];
+
+
+    if(condition) {
+      this.handleBookListChange(bookReset, movingBackward);
+    }
+    else {
+      const newBookIndex = movingBackward ? presentBookIndex - 2 : presentBookIndex + 1;
+      const newBook = bookList[newBookIndex];
+      this.handleBookListChange(newBook, movingBackward);
+    }
   };
 
   onCloseModal = () => {
@@ -81,7 +112,12 @@ class App extends React.Component {
           handleChapterListChange={this.handleChapterListChange}
           {...this.state}
         />
-        <Reader {...this.state} setStrongsURL={this.setStrongsURL}/>
+        <Reader
+          {...this.state}
+          setStrongsURL={this.setStrongsURL}
+          handleBookListChange={this.handleBookListChange}
+          handleChapterListChange={this.handleChapterListChange}
+        />
         <StrongsModal
           {...this.state}
           onCloseModal={this.onCloseModal}
