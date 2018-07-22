@@ -18,8 +18,14 @@ const Reader = ({
     {
       ({loading, error, data}) => (
         <section id={"readerWrapper"}>
-          {loading && <div className={"spinLoader"}><PropagateLoader color={"#333333"} className={"loader"}/></div>}
           {error && console.error(`Could not fetch from ${chapterURL}. Got ${error.stack}`)}
+
+          {loading && (
+            <div className={"spinLoader"}>
+                <PropagateLoader color={"#333333"} className={"loader"}/>
+            </div>
+          )}
+
           {data && (
             <div id={"Reader"}>
               <ChapterController
