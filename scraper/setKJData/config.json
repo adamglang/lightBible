@@ -36,7 +36,13 @@
       "urlPart": "joshua",
       "chapterCount": 24,
       "testament": "old"
-    },
+	},
+	{
+	  "name": "Judges",
+	  "urlPart": "judges",
+	  "chapterCount": 21,
+	  "testament": "old"
+	},
     {
       "name": "Ruth",
       "urlPart": "ruth",
@@ -262,7 +268,7 @@
     {
       "name": "Romans",
       "urlPart": "romans",
-      "chapterCount": 15,
+      "chapterCount": 16,
       "testament": "new"
     },
     {
